@@ -32,9 +32,9 @@ struct retro_core_option_definition option_defs_us[] = {
       "Internal resolution (restart)",
       "Configure the resolution. Requires a restart.",
       {
-         { "320x200",   NULL },
+         //{ "320x200",   NULL },
          { "320x240",   NULL },
-         { "320x480",   NULL },
+         /*{ "320x480",   NULL },
          { "360x200",   NULL },
          { "360x240",   NULL },
          { "360x400",   NULL },
@@ -64,7 +64,7 @@ struct retro_core_option_definition option_defs_us[] = {
          { "1600x1000", NULL },
          { "1600x1200", NULL },
          { "1920x1080", NULL },
-         { "1920x1200", NULL },
+         { "1920x1200", NULL },*/
          { NULL, NULL },
       },
 #if defined(_3DS)
@@ -72,15 +72,15 @@ struct retro_core_option_definition option_defs_us[] = {
 #elif defined(DINGUX)
       "320x240"
 #else
-      "320x200"
+      "320x240"
 #endif
    },
    {
       "tyrquake_framerate",
       "Framerate (restart)",
-      "Modify framerate. Requires a restart. Values above 72 may cause various timing bugs.",
+      "Modify framerate. Requires a restart.",
       {
-         { "auto",            "Auto"},
+         /*{ "auto",            "Auto"},
          { "10",              "10fps"},
          { "15",              "15fps"},
          { "20",              "20fps"},
@@ -104,7 +104,9 @@ struct retro_core_option_definition option_defs_us[] = {
          { "240",              "240fps"},
          { "244",              "244fps"},
          { "300",              "300fps"},
-         { "360",              "360fps"},
+         { "360",              "360fps"},*/
+         { "30",              "Original"},
+         { "50",              "FunKey S"},
          { NULL, NULL },
       },
 #if defined(_3DS)
@@ -114,7 +116,7 @@ struct retro_core_option_definition option_defs_us[] = {
 #elif defined(DINGUX)
       "30"
 #else
-      "auto"
+      "50"
 #endif
    },
    {

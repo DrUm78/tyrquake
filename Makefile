@@ -24,7 +24,7 @@ MP3LIB=mad
 VORBISLIB=vorbis
 
 ifeq ($(platform),)
-platform = unix
+platform = funkey
 ifeq ($(shell uname -a),)
    platform = win
 else ifneq ($(findstring MINGW,$(shell uname -a)),)
@@ -286,7 +286,7 @@ else ifeq ($(platform), rpi4_64)
 
 # (armv7 a7, hard point, neon based) ### 
 # NESC, SNESC, C64 mini 
-else ifeq ($(platform), classic_armv7_a7)
+else ifeq ($(platform), funkey)
 	TARGET := $(TARGET_NAME)_libretro.so
 	fpic := -fPIC
         SHARED := -shared -Wl,--version-script=common/libretro-link.T  -Wl,--no-undefined

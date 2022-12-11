@@ -415,7 +415,7 @@ cvar_t cl_sidespeed = { "cl_sidespeed", "350" };
 
 cvar_t cl_movespeedkey = { "cl_movespeedkey", "2.0" };
 
-cvar_t cl_yawspeed = { "cl_yawspeed", "140" };
+cvar_t cl_yawspeed = { "cl_yawspeed", "250" };
 cvar_t cl_pitchspeed = { "cl_pitchspeed", "150" };
 
 cvar_t cl_anglespeedkey = { "cl_anglespeedkey", "1.5" };

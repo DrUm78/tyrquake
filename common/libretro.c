@@ -197,12 +197,12 @@ gp_layout_t classic = {
    {
       {"JOY_LEFT",  "+left"},         {"JOY_RIGHT", "+right"},
       {"JOY_DOWN",  "+back"},         {"JOY_UP",    "+forward"},
-      {"JOY_B",     "+jump"} ,        {"JOY_A",     "impulse 10"},
-      {"JOY_X",     "+klook"},        {"JOY_Y",     "+attack"},
-      {"JOY_L",     "+moveleft"},     {"JOY_R",     "+moveright"},
+      {"JOY_B",     "+jump"} ,        {"JOY_A",     "+klook"},
+      {"JOY_X",     "+attack"},       {"JOY_Y",     "+strafe"},
+      {"JOY_L",     "impulse 12"},    {"JOY_R",     "impulse 10"},
       {"JOY_L2",    "+lookup"},       {"JOY_R2",    "+lookdown"},
       {"JOY_L3",    "+movedown"},     {"JOY_R3",    "+moveup"},
-      {"JOY_SELECT","+togglewalk"},   {"JOY_START", "togglemenu"},
+      {"JOY_SELECT",""},              {"JOY_START", "togglemenu"},
       { 0 },
    },
 };
@@ -234,7 +234,7 @@ gp_layout_t classic_alt = {
       {"JOY_B",     "+lookdown"},     {"JOY_A",     "+right"},
       {"JOY_X",     "+lookup"},       {"JOY_Y",     "+left"},
       {"JOY_L",     "+jump"},         {"JOY_R",     "+attack"},
-      {"JOY_L2",    "+speed"},          {"JOY_R2",    "impulse 10"},
+      {"JOY_L2",    "+speed"},        {"JOY_R2",    "impulse 10"},
       {"JOY_L3",    "+movedown"},     {"JOY_R3",    "impulse 12"},
       {"JOY_SELECT","+togglewalk"},   {"JOY_START", "togglemenu"},
       { 0 },
@@ -1195,21 +1195,27 @@ bool retro_load_game(const struct retro_game_info *info)
 
    if (!path_is_valid(cfg_file))
    {
-       Cvar_Set("gamma", "0.95");
+       Cvar_Set("gamma", "0.75");
        Cmd_ExecuteString("bind ' \"toggleconsole\"", src_command);
        Cmd_ExecuteString("bind ~ \"toggleconsole\"", src_command);
        Cmd_ExecuteString("bind ` \"toggleconsole\"", src_command);
 
-       Cmd_ExecuteString("bind f \"+moveup\"", src_command);
-       Cmd_ExecuteString("bind c \"+movedown\"", src_command);
+       Cmd_ExecuteString("bind JOY_L \"impulse 12\"", src_command);
+       Cmd_ExecuteString("bind JOY_R \"impulse 10\"", src_command);
+       Cmd_ExecuteString("bind JOY_L2 \"+movedown\"", src_command);
+       Cmd_ExecuteString("bind JOY_R2 \"+moveup\"", src_command);
 
-       Cmd_ExecuteString("bind a \"+moveleft\"", src_command);
-       Cmd_ExecuteString("bind d \"+moveright\"", src_command);
-       Cmd_ExecuteString("bind w \"+forward\"", src_command);
-       Cmd_ExecuteString("bind s \"+back\"", src_command);
+       Cmd_ExecuteString("bind JOY_UP \"+forward\"", src_command);
+       Cmd_ExecuteString("bind JOY_DOWN \"+back\"", src_command);
+       Cmd_ExecuteString("bind JOY_LEFT \"+left\"", src_command);
+       Cmd_ExecuteString("bind JOY_RIGHT \"+right\"", src_command);
 
-       Cmd_ExecuteString("bind e \"impulse 10\"", src_command);
-       Cmd_ExecuteString("bind q \"impulse 12\"", src_command);
+       Cmd_ExecuteString("bind JOY_B \"+jump\"", src_command);
+       Cmd_ExecuteString("bind JOY_A \"+klook\"", src_command);
+       Cmd_ExecuteString("bind JOY_X \"+attack\"", src_command);
+       Cmd_ExecuteString("bind JOY_Y \"+strafe\"", src_command);
+       Cmd_ExecuteString("bind JOY_START \"togglemenu\"", src_command);
+       Cmd_ExecuteString("bind JOY_SELECT \"\"", src_command);
    }
 
    Cmd_ExecuteString("bind AUX1 \"+moveright\"", src_command);
