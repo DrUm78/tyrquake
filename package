@@ -1,16 +1,10 @@
 #!/bin/sh
 
-mkdir -p opk/cores
+mkdir -p opk/
 
-cd /opt/sdlretro
-git pull
-mkdir -p build/
-cd build/
-cmake -DCMAKE_BUILD_TYPE=Release -DMODEL=funkey ..
-make clean
-make
-/opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip src/sdlretro
-cp src/sdlretro ../../libretro-tyrquake/opk
+cd /opt/picoarch
+./package
+cp picoarch README.funkey-s.md ../libretro-tyrquake/opk
 
 cd /opt/libretro-tyrquake
 git fetch --all
@@ -18,7 +12,7 @@ git merge upstream/master
 make clean
 make
 /opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip tyrquake_libretro.so
-cp tyrquake_libretro.so opk/cores/
+cp tyrquake_libretro.so opk/
 
 cp icons/tyrquake.png opk/
 cp LICENSE.txt readme.txt readme-id.txt opk/
@@ -37,11 +31,11 @@ esac
 print '[Desktop Entry]
 Name=Quake
 Comment=TyrQuake v0.62 for Libretro
-Exec=sdlretro %f
+Exec=picoarch ./tyrquake_libretro.so
 Icon=tyrquake
-Categories=games
-SelectorFilter=pak' > opk/tyrquake.funkey-s.desktop
+Categories=games' > opk/tyrquake.funkey-s.desktop
 
+rm -f *.opk
 mksquashfs opk/ tyrquake_v0.62_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
 
 rm -rf opk/
