@@ -105,8 +105,9 @@ struct retro_core_option_definition option_defs_us[] = {
          { "244",              "244fps"},
          { "300",              "300fps"},
          { "360",              "360fps"},*/
-         { "30",              "Original"},
-         { "50",              "FunKey S"},
+         { "30",              "30fps"},
+         { "50",              "50fps"},
+         { "60",              "60fps"},
          { NULL, NULL },
       },
 #if defined(_3DS)
