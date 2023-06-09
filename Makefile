@@ -148,6 +148,8 @@ else ifeq ($(platform), tvos-arm64)
 ifeq ($(IOSSDK),)
    IOSSDK := $(shell xcodebuild -version -sdk appletvos Path)
 endif
+   CC = clang -arch arm64 -isysroot $(IOSSDK)
+   CXX = clang++ -arch arm64 -isysroot $(IOSSDK)
    CFLAGS += -DIOS -DIOS_ARM64
 
 # iOS Theos
@@ -179,7 +181,7 @@ else ifneq (,$(filter $(platform), ps3 psl1ght))
 	CC = $(PS3DEV)/ppu/bin/ppu-$(COMMONLV)gcc$(EXE_EXT)
 	AR = $(PS3DEV)/ppu/bin/ppu-$(COMMONLV)ar$(EXE_EXT)
 	ifeq ($(platform), psl1ght)
-		CFLAGS += -D__PSL1GHT__
+		CFLAGS += -D__PSL1GHT__ -I$(PS3DEV)/ppu/include
 	endif
 
 # PSP1
