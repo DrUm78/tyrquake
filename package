@@ -1,21 +1,12 @@
 #!/bin/sh
 
 mkdir -p opk/
-
-cd /opt/picoarch
-./package
-cp picoarch README.funkey-s.md ../libretro-tyrquake/opk
-
-cd /opt/libretro-tyrquake
 git fetch --all
 git merge upstream/master
 make clean
 make
 /opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip tyrquake_libretro.so
-cp tyrquake_libretro.so opk/
-
-cp icons/tyrquake.png opk/
-cp LICENSE.txt readme.txt readme-id.txt opk/
+cp tyrquake_libretro.so icons/tyrquake.png LICENSE.txt readme.txt readme-id.txt opk/
 
 # https://unix.stackexchange.com/questions/219268/how-to-add-new-lines-when-using-echo
 print()
